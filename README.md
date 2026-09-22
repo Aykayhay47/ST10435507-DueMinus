@@ -200,7 +200,7 @@ _Add Settings screenshot here._
 The DueMinus prototype demonstration video is available on YouTube.
 
 **YouTube Video:**  
-PASTE YOUR YOUTUBE LINK HERE
+https://youtu.be/lDd1pz0pHdc
 
 ## GitHub Repository
 

@@ -169,31 +169,27 @@ Screenshots of the DueMinus application will be added below.
 
 ### Login
 
-_Add Login screenshot here._
-
 ### Registration
-
-_Add Registration screenshot here._
 
 ### Dashboard
 
-_Add Dashboard screenshot here._
-
 ### Add Deadline
-
-_Add Add Deadline screenshot here._
 
 ### Deadline List
 
-_Add Deadline List screenshot here._
-
 ### Study Timer
 
-_Add Study Timer screenshot here._
-
 ### Settings
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233930" src="https://github.com/user-attachments/assets/f872e90a-95d9-4a41-86d8-c02dfd736109" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233930" src="https://github.com/user-attachments/assets/5d8fb322-def2-422e-8c7b-f8a1cc502594" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233843" src="https://github.com/user-attachments/assets/632c59c4-bbc4-4771-aea8-23c8c1a928ca" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233809" src="https://github.com/user-attachments/assets/e160736e-e870-4d08-ae4d-cf92217ffdcb" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233755" src="https://github.com/user-attachments/assets/0ce3697d-1ae1-4001-8dfc-ac6698966954" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233738" src="https://github.com/user-attachments/assets/08ebca0c-d6e0-418d-91aa-2205a08558e8" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233709" src="https://github.com/user-attachments/assets/306c7418-58e0-4fea-a557-1139863c2293" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 233918" src="https://github.com/user-attachments/assets/854ccdfb-9521-4317-b2f1-4b4794979099" />
 
-_Add Settings screenshot here._
+
 
 ## Demonstration Video
 

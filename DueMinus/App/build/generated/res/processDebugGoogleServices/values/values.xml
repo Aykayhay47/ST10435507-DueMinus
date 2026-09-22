@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">605857807628</string>
+    <string name="google_api_key" translatable="false">AIzaSyAV-M3Ro84Ul7NPZhJbSnnPBKQMYvnGZ6k</string>
+    <string name="google_app_id" translatable="false">1:605857807628:android:b20cbe57dca26f24635d29</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAV-M3Ro84Ul7NPZhJbSnnPBKQMYvnGZ6k</string>
+    <string name="google_storage_bucket" translatable="false">dueminus-15331.firebasestorage.app</string>
+    <string name="project_id" translatable="false">dueminus-15331</string>
+</resources>

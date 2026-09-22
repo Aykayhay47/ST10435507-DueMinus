@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "605857807628",
+    "project_id": "dueminus-15331",
+    "storage_bucket": "dueminus-15331.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605857807628:android:b20cbe57dca26f24635d29",
+        "android_client_info": {
+          "package_name": "com.fake.dueminus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV-M3Ro84Ul7NPZhJbSnnPBKQMYvnGZ6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

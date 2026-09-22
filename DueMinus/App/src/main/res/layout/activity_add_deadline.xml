@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Deadline"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/etDeadlineTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deadline Title"
+            android:layout_marginTop="24dp" />
+
+        <EditText
+            android:id="@+id/etDeadlineCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Category (Assignment, Test, Exam, Project)"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/etDeadlineDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:minLines="3"
+            android:gravity="top"
+            android:layout_marginTop="12dp" />
+
+        <DatePicker
+            android:id="@+id/datePickerDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <TimePicker
+            android:id="@+id/timePickerDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner" />
+
+        <EditText
+            android:id="@+id/etDeadlinePriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Priority (Low, Medium, High)"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnSaveDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Deadline"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>

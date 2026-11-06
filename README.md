@@ -1,204 +1,134 @@
 # DueMinus
 
-## Overview
+**Homework & Study Countdown Android Application**
 
-DueMinus is an Android application designed to help students manage upcoming assignments, tests, examinations and other important deadlines.
+DueMinus is an Android application designed to help learners organise homework, assignments, tests and examination deadlines. It provides a simple place to record due dates, review upcoming work, receive reminders and use a focused study timer.
 
-The application provides students with a simple way to create and manage deadlines, view their upcoming work, see a countdown to their next deadline and use a study timer to support focused study sessions.
+## Project information
 
-DueMinus was developed using Android Studio and Kotlin, with Firebase Authentication and Firestore used for user authentication and data storage. The project also includes a REST API developed using Node.js and Express.js.
+- **Application:** DueMinus
+- **Platform:** Android
+- **Language:** Kotlin
+- **Package name:** `com.fake.dueminus`
+- **Authentication:** Firebase Authentication (email/password and Google Sign-In)
+- **Local database:** Room
+- **API communication:** Retrofit
+- **Background tasks:** WorkManager
+- **Supported interface languages:** English, Afrikaans and isiXhosa
 
 ## Features
 
-- User registration
-- User login
-- Firebase Authentication
-- Student dashboard
-- Deadline creation
-- Deadline management
-- Deadline completion
-- Deadline deletion
-- Upcoming deadline countdown
-- 25-minute study timer
-- Settings
-- English language option
-- Afrikaans language option
-- isiXhosa language option
-- Notification setting
-- User logout
-- REST API for deadline management
+- **Account registration and login:** Learners can register and sign in using an email address and password.
+- **Google Sign-In (SSO):** Learners can authenticate using an existing Google account through Android Credential Manager and Firebase Authentication.
+- **Dashboard:** A central starting screen for the learner, including relevant deadline information.
+- **Deadline management:** Add deadlines, view saved items, mark work as completed and delete items.
+- **Offline-first storage:** Deadline records are stored locally with Room so that saved information can remain available without an internet connection.
+- **API synchronisation:** The app includes background synchronisation support for pending local changes when network connectivity is available.
+- **Deadline reminders:** WorkManager schedules local Android notifications for upcoming deadlines and at the due time.
+- **Study timer:** A 25-minute countdown timer supports focused study sessions, with start and reset controls.
+- **Settings:** Learners can select a language and manage the notification preference.
+- **Multiple languages:** Supported interface text includes English, Afrikaans and isiXhosa. The selected language preference is saved.
 
-## Technologies Used
+> **Notification note:** The current deadline reminders are locally scheduled Android notifications using WorkManager. They are not remote Firebase Cloud Messaging (FCM) push notifications.
 
-- Android Studio
-- Kotlin
-- XML
-- Firebase Authentication
-- Firebase Firestore
-- Node.js
-- Express.js
-- REST API
-- Visual Studio Code
-- GitHub
+## How the app works
 
-## Android Application
+### 1. Register or sign in
 
-The Android application was developed using Kotlin in Android Studio.
+When DueMinus opens, the learner can log in with an email address and password. A new learner can use the registration option to create an account. Alternatively, the learner can select **Continue with Google**, choose a Google account and authenticate through Firebase Authentication.
 
-The main application allows users to register and log in before accessing the DueMinus dashboard.
+### 2. Use the dashboard
 
-The dashboard provides access to the main features of the application, including:
+After successful authentication, the learner is taken to the dashboard. This acts as the main navigation point for the app and displays relevant deadline information. The available dashboard text follows the selected app language where translations have been implemented.
 
-- Add Deadline
-- View My Deadlines
-- Study Timer
-- Settings
-- Logout
+### 3. Add and manage deadlines
 
-Users can create deadlines containing information such as the title, category, description, priority and due date/time.
+The learner opens the deadline section and adds a task by entering its details and due date/time. The saved deadline is displayed in the list. The learner can return to the list to review upcoming work, mark a task as complete or delete it.
 
-The application then displays the user's upcoming deadlines and calculates the remaining time until the next deadline.
+### 4. Store work locally and synchronise
 
-## REST API
+Deadline data is stored in the local Room database. This supports access to saved deadline information when the phone is offline. The app also has a background synchronisation mechanism that can process pending changes when a network connection is available and communicate with the project's REST API. For an assessment demonstration, show an offline save followed by reconnecting and verifying the synchronisation result.
 
-DueMinus includes a REST API developed using Node.js and Express.js.
+### 5. Receive deadline reminders
 
-The REST API provides an additional layer between the Android application and Firebase Firestore.
+The app schedules local background work for deadline reminders. When a scheduled reminder is due, Android displays a notification, provided the learner has granted notification permission and the device allows notifications. The app schedules a reminder before the deadline and another at the due time.
 
-The basic architecture is:
+### 6. Study with the timer
 
-Android Application  
-↓  
-REST API  
-↓  
-Node.js + Express.js  
-↓  
-Firebase Firestore
+The learner can open the study timer, start the 25-minute countdown and reset it when required. This provides a simple focus session without needing a separate timer application.
 
-The API provides endpoints for retrieving, creating, updating and deleting deadlines.
+### 7. Change settings and language
 
-## Firebase
+In Settings, the learner can choose English, Afrikaans or isiXhosa and manage the notification preference. The language selection is saved so that it can be restored when the app is opened again. The translated interface coverage depends on the screens for which translated string resources have been added.
 
-Firebase is used in DueMinus for authentication and cloud data storage.
+## Technologies used
 
-### Firebase Authentication
+| Technology | Purpose |
+|---|---|
+| Kotlin | Android application development |
+| Android Studio | Project development and APK building |
+| Firebase Authentication | Email/password authentication and Google SSO |
+| Cloud Firestore | User settings/profile data |
+| Room | Local deadline database |
+| Retrofit | Communication between Android and the REST API |
+| WorkManager | Background synchronisation and scheduled reminders |
+| Android notification APIs | Displaying local deadline notifications |
+| Gradle | Build and dependency management |
 
-Firebase Authentication is used to allow users to register and log in using an email address and password.
+## Build and run
 
-### Firebase Firestore
+1. Clone or download this repository.
+2. Open the project in Android Studio.
+3. Make sure Android Studio has a compatible JDK and Android SDK installed.
+4. Confirm that the Firebase configuration file `app/google-services.json` is present. Do not publish private credentials or signing keystore files.
+5. Sync the project with Gradle.
+6. Connect an Android device with USB debugging enabled, or start an emulator.
+7. Build and run the `app` configuration.
 
-Firestore is used to store user profile information and deadline data.
+To build a debug APK from the project root:
 
-## Database Structure
+```powershell
+.\gradlew assembleDebug
+```
 
-The main Firestore structure is:
+The debug APK is normally generated at:
 
-users/{userId}
+```text
+app/build/outputs/apk/debug/app-debug.apk
+```
 
-- name
-- email
-- language
-- notificationsEnabled
+## API
 
-users/{userId}/deadlines/{deadlineId}
+The Android application uses Retrofit to communicate with the DueMinus REST API. The API project is maintained separately from the Android application. The API base URL must be configured for the environment being used. For a physical-device test, the phone and development computer must be able to reach the configured server over the same network, unless a hosted API URL is configured.
 
-- title
-- category
-- description
-- priority
-- dueDateTime
-- completed
-- createdAt
+## Testing and demonstration
 
-Each user's deadlines are stored inside their own user document.
+The following features have been built and tested during development:
 
-## API Endpoints
+- Email/password authentication.
+- Google Sign-In successfully reaching the DueMinus dashboard on a physical Android phone.
+- Deadline creation and management.
+- A scheduled local deadline notification received on a physical phone.
+- Study timer operation.
+- English, Afrikaans and isiXhosa selection and language persistence on the tested screens.
+- Successful Gradle debug build.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/health` | Checks whether the API is running |
-| GET | `/api/deadlines/:userId` | Retrieves a user's deadlines |
-| POST | `/api/deadlines` | Creates a new deadline |
-| PUT | `/api/deadlines/:userId/:deadlineId` | Updates an existing deadline |
-| DELETE | `/api/deadlines/:userId/:deadlineId` | Deletes a deadline |
+Before final submission, also verify the signed release APK, offline-to-online synchronisation, reminder cancellation/completion behaviour and all screens included in the final demonstration.
 
-## Installation
+## Video presentation
 
-### Android Application
+**YouTube demonstration:** [INSERT YOUR YOUTUBE VIDEO LINK HERE]
 
-1. Clone the DueMinus GitHub repository.
-2. Open the Android project using Android Studio.
-3. Allow Gradle to synchronise the project.
-4. Make sure the Firebase configuration is available in the project.
-5. Build the application.
-6. Run the application on an Android emulator or compatible Android device.
+The video should demonstrate registration/login, Google Sign-In, dashboard navigation, adding and managing deadlines, reminders, the study timer, settings/language selection and offline behaviour/synchronisation where available.
 
-### REST API
+Replace the placeholder above with the published YouTube URL before submitting.
 
-1. Open the `DueMinusAPI` folder in Visual Studio Code.
-2. Install the required Node.js dependencies.
-3. Configure the Firebase service account securely.
-4. Start the REST API.
-5. The API runs on the configured local port.
+## Repository
 
-> Do not upload `serviceAccountKey.json`, `.env` files or other private credentials to GitHub.
+GitHub: https://github.com/Aykayhay47/ST10435507-DueMinus
 
-## Testing
+## Developer
 
-The application should be tested to confirm that the main features work correctly.
-
-Testing includes:
-
-- User registration
-- User login
-- Invalid login details
-- Creating deadlines
-- Viewing deadlines
-- Completing deadlines
-- Deleting deadlines
-- Countdown functionality
-- Study timer
-- Settings
-- REST API endpoints
-
-Automated testing is also included as part of the project development and GitHub workflow.
-
-## Screenshots
-
-Screenshots of the DueMinus application will be added below.
-
-### Login
-
-### Registration
-
-### Dashboard
-
-### Add Deadline
-
-### Deadline List
-
-### Study Timer
-
-### Settings
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233930" src="https://github.com/user-attachments/assets/f872e90a-95d9-4a41-86d8-c02dfd736109" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233930" src="https://github.com/user-attachments/assets/5d8fb322-def2-422e-8c7b-f8a1cc502594" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233843" src="https://github.com/user-attachments/assets/632c59c4-bbc4-4771-aea8-23c8c1a928ca" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233809" src="https://github.com/user-attachments/assets/e160736e-e870-4d08-ae4d-cf92217ffdcb" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233755" src="https://github.com/user-attachments/assets/0ce3697d-1ae1-4001-8dfc-ac6698966954" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233738" src="https://github.com/user-attachments/assets/08ebca0c-d6e0-418d-91aa-2205a08558e8" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233709" src="https://github.com/user-attachments/assets/306c7418-58e0-4fea-a557-1139863c2293" />
-<img width="1920" height="1080" alt="Screenshot 2026-09-22 233918" src="https://github.com/user-attachments/assets/854ccdfb-9521-4317-b2f1-4b4794979099" />
-
-
-
-## Demonstration Video
-
-The DueMinus prototype demonstration video is available on YouTube.
-
-**YouTube Video:**  
-https://youtu.be/lDd1pz0pHdc
-
-## GitHub Repository
-
-**GitHub:**  
-https://github.com/Aykayhay47/ST10435507-DueMinus
+**Muhammad Aashiq Petersen**  
+**Student number:** ST10435507  
+**Project:** DueMinus
